@@ -1,7 +1,7 @@
 CC = ../src/calcc
 LDFLAGS = -L../lib -lcalc
 AS = nasm
-LD = ld
+LD = ld -melf_i386
 
 PROGRAMS = hello fib fact
 
@@ -9,13 +9,13 @@ all:	$(PROGRAMS)
 	@echo "Build done. Try out test programs: $(PROGRAMS)"
 
 hello:	hello.o
-	ld $< -o $@ $(LDFLAGS)
+	$(LD) $< -o $@ $(LDFLAGS)
 
 fib:	fib.o
-	ld $< -o $@ $(LDFLAGS)
+	$(LD) $< -o $@ $(LDFLAGS)
 
 fact:	fact.o
-	ld $< -o $@ $(LDFLAGS)
+	$(LD) $< -o $@ $(LDFLAGS)
 
 %.o:	%.asm
 	nasm -f elf $< -o $@

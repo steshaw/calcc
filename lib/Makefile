@@ -20,5 +20,3 @@ libcalc.a: $(OBJS)
 
 clean:
 	rm -f $(OBJS) libcalc.a library.asm
-
-
